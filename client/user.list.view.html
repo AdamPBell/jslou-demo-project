@@ -1,0 +1,34 @@
+<div>
+    <div class="row">
+        <uib-alert ng-repeat="alert in alerts" type="{{alert.type}}" close="closeAlert($index)">{{alert.msg}}</uib-alert>
+    </div>
+
+    <table st-table="users" ng-show="users" class="table table-striped">
+        <thead>
+            <tr>
+                <th></th>
+                <th>User Id</th>
+                <th>Name</th>
+                <th>Email</th>
+                <th><a class="text-success" href="#/edit"><i class="fa fa-plus" title="Create User"></i></a></th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr ng-repeat="user in users">
+                <td>
+                    <a href="#/edit/{{user._id}}">
+                        <i class="fa fa-pencil-square-o"></i>
+                    </a>
+                    <a ng-click="removeUser($index)">
+                        <i class="fa fa-trash"></i>
+                    </a>
+                </td>
+                <td>{{user.userId}}</td>
+                <td>{{user.name}}</td>
+                <td>{{user.email}}</td>
+            </tr>
+        </tbody>
+    </table>
+
+
+</div>

@@ -1,0 +1,30 @@
+<div>
+    <div class="row">
+        <uib-alert ng-repeat="alert in alerts" type="{{alert.type}}" close="closeAlert($index)">{{alert.msg}}</uib-alert>
+    </div>
+
+    <table st-table="sessions" class="table table-striped">
+        <thead>
+            <tr>
+                <th></th>
+                <th>User Id</th>
+                <th>Token</th>
+                <th>Created Time</th>
+                <th>Last Updated Time</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr ng-repeat="session in sessions">
+                <td>
+                    <a ng-click="removeSession($index)">
+                        <i class="fa fa-trash"></i>
+                    </a>
+                </td>
+                <td>{{session.user.userId}}</td>
+                <td>{{session.token}}</td>
+                <td>{{session.createdTimeStamp}}</td>
+                <td>{{session.lastUpdatedTimeStamp}}</td>
+            </tr>
+        </tbody>
+    </table>
+</div>

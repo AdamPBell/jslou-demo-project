@@ -1,0 +1,66 @@
+<div>
+    <h1>Users <small><i>{{ createOrEdit }}</i></small></h1>
+    <div class="row">
+        <div class="col-sm-12">
+            <uib-alert ng-repeat="alert in alerts" type="{{alert.type}}" dismiss-on-timeout="{{alert.dismissOnTimeout}}" close="closeAlert($index)">{{alert.msg}}</uib-alert>
+        </div>
+    </div>
+    <form class="form-horizontal">
+        <div class="form-group">
+            <label class="control-label col-sm-2">UserId</label>
+            <div class="col-sm-10">
+                <input type="text" class="form-control" ng-model="user.userId" placeholder="UserId" ng-required>
+                <div ng-messages="errors.userId" role="alert">
+                    <div ng-message="required" style="color:red;">
+                        UserId is required
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="inputUserEmail" class="col-sm-2 control-label">Password</label>
+            <div class="col-sm-10">
+                <input type="password" id="inputUserPassword" class="form-control" ng-model="user.password" placeholder="Password" ng-required>
+                <div ng-messages="errors.passwordHash" role="alert">
+                    <div ng-message="required" style="color:red;">
+                        Password is required
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="inputUserEmail" class="col-sm-2 control-label">Email</label>
+            <div class="col-sm-10">
+                <input type="text" id="inputUserEmail" class="form-control" ng-model="user.email" placeholder="Email" required>
+                <div ng-messages="errors.email" role="alert">
+                    <div ng-message="required" style="color:red;">
+                        Email is required
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="inputUserName" class="col-sm-2 control-label">Name</label>
+            <div class="col-sm-10">
+                <input type="text" id="inputUserName" class="form-control" ng-model="user.name" placeholder="Name">
+            </div>
+        </div>
+        <div class="form-group" ng-if="user._id">
+            <label for="inputUserCreatedTime" class="col-sm-2 control-label">Created Time</label>
+            <div class="col-sm-10">
+                <input type="text" id="inputUserCreatedTime" class="form-control" ng-model="user.createdTimeStamp" readonly>
+            </div>
+        </div>
+        <div class="form-group" ng-if="user._id">
+            <label for="inputUserLastUpdatedTime" class="col-sm-2 control-label">Last Updated Time</label>
+            <div class="col-sm-10">
+                <input type="text" id="inputUserLastUpdatedTime" class="form-control" ng-model="user.lastUpdatedTimeStamp" readonly>
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="col-sm-offset-2 col-sm-10">
+                <button class="btn btn-primary" ng-click="saveUser()">Save</button>
+            </div>
+        </div>
+    </form>
+</div>
